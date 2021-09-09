@@ -26,14 +26,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             //column(세로정렬), row(가로정렬) -> xml에서는 LinearLayout
-            Column(
+            Row(
                 modifier = Modifier
                     .background(color = Color.Cyan)
                     //전체화면을 차지
                     .fillMaxSize(),
-                //정렬 xml에서는 gravity
-            verticalArrangement = Arrangement.Bottom,
-                horizontalAlignment = Alignment.End
+              horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Greeting("Android")
                 Greeting("KMP")
