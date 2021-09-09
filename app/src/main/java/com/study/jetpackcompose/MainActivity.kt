@@ -5,14 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -26,14 +25,28 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-                    Greeting("Android")
+            //column(세로정렬), row(가로정렬) -> xml에서는 LinearLayout
+            Column(
+                modifier = Modifier
+                    .background(color = Color.Cyan)
+                    //전체화면을 차지
+                    .fillMaxSize(),
+                //정렬 xml에서는 gravity
+            verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.End
+            ) {
+                Greeting("Android")
+                Greeting("KMP")
+                Greeting("HAPPY")
+            }
         }
     }
 }
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!",
+    Text(
+        text = "Hello $name!",
         //텍스트 사이즈
         fontSize = 20.sp,
         //텍스트 굵기
@@ -52,8 +65,7 @@ fun Greeting(name: String) {
             //0.5f는 반을 의미 1.0f가 1(전체)
             .fillMaxWidth(0.5f)
             //height 길이를 부모 전체로 설정
-            .fillMaxHeight(0.3f)
-        )
+    )
 }
 
 //안드로이드 스튜디오에서 프리뷰를 보기위한 주석
